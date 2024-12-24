@@ -1,0 +1,30 @@
+<view class="container">
+  <!-- 轮播图区域 -->
+  <swiper class="banner-swiper" indicator-dots="true" autoplay="{{true}}" interval="3000" duration="500" circular="true" indicator-color="rgba(255, 255, 255, 0.3)" indicator-active-color="#00CED1">
+    <swiper-item wx:for="{{bannerImages}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 选择图片按钮 -->
+  <view class="choose-image-btn" bindtap="chooseImage">
+    <image class="btn-icon" src="/assets/icons/tools/upload.png"></image>
+    <text>选取图片</text>
+  </view>
+
+  <!-- 工具栏标题 -->
+  <view class="tools-title">
+    <image class="title-icon" src="/assets/icons/tools/more.png"></image>
+    <text>更多工具</text>
+  </view>
+
+  <!-- 工具栏 -->
+  <view class="tools-grid">
+    <view class="tool-item" wx:for="{{tools}}" wx:key="id" bindtap="handleToolClick" data-id="{{item.id}}">
+      <view class="tool-icon-wrapper">
+        <image class="tool-icon" src="{{item.icon}}.png"></image>
+      </view>
+      <text class="tool-name">{{item.name}}</text>
+    </view>
+  </view>
+</view> 

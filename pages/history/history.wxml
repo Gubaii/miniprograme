@@ -1,0 +1,42 @@
+<view class="container">
+  <!-- 温馨提示 -->
+  <view class="tip-container">
+    <text class="tip-text">温馨提示：向下滑动可以刷新列表；记录中仅保留最近24小时制作的图片，请您及时保存到手机相册中。</text>
+  </view>
+
+  <!-- 任务列表 -->
+  <view class="task-list">
+    <view class="task-item" wx:for="{{taskList}}" wx:key="id">
+      <!-- 任务卡片 -->
+      <view class="task-card">
+        <!-- 状态图标 -->
+        <view class="status-icon {{item.status}}">
+          <image wx:if="{{item.status === 'waiting'}}" src="/assets/icons/waiting.png"/>
+          <image wx:if="{{item.status === 'processing'}}" src="/assets/icons/processing.png"/>
+          <image wx:if="{{item.status === 'failed'}}" src="/assets/icons/failed.png"/>
+        </view>
+        
+        <!-- 状态文本 -->
+        <text class="status-text">
+          {{item.status === 'waiting' ? '等待中' : 
+            item.status === 'processing' ? '处理中' : 
+            '出错了，点击重试'}}
+        </text>
+
+        <!-- 结果图片 -->
+        <image 
+          wx:if="{{item.resultUrl}}" 
+          class="result-image" 
+          src="{{item.resultUrl}}" 
+          mode="aspectFill"
+        />
+
+        <!-- 功能名称 -->
+        <view class="function-name">{{item.functionName}}</view>
+        
+        <!-- 完成时间 -->
+        <view class="complete-time">{{item.completeTime}}</view>
+      </view>
+    </view>
+  </view>
+</view> 

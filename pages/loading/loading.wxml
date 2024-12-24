@@ -1,0 +1,17 @@
+<view class="loading-container">
+  <!-- 图片预览 -->
+  <view class="image-preview">
+    <image src="{{imagePath}}" mode="aspectFit"></image>
+  </view>
+
+  <!-- 加载动画 -->
+  <view class="loading-content">
+    <view class="loading-title">可爱的加载动画</view>
+    <view class="loading-text">处理中，预计需要{{remainingTime}}秒，修复完成的图片会在记录中持续保存24小时。</view>
+    
+    <view class="button-group">
+      <button class="btn btn-outline" bindtap="goBack">返回首页</button>
+      <button class="btn btn-primary" bindtap="checkHistory">查看记录</button>
+    </view>
+  </view>
+</view> 

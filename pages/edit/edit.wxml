@@ -1,0 +1,30 @@
+<view class="edit-container">
+  <!-- 图片预览区域 -->
+  <view class="image-preview">
+    <block wx:if="{{imagePath}}">
+      <image 
+        class="preview-image {{imageError ? 'error' : ''}}" 
+        src="{{imagePath}}" 
+        mode="aspectFit"
+        binderror="handleImageError"
+        bindload="handleImageLoad"
+        style="width: 100%; height: 100%;"
+      ></image>
+    </block>
+    <view class="loading-placeholder" wx:if="{{!imageLoaded && !imageError && imagePath}}">
+      <text>图片加载中...</text>
+    </view>
+    <view class="error-placeholder" wx:if="{{imageError}}">
+      <text>图片加载失败</text>
+      <text class="error-tip">请检查图片格式是否正确</text>
+    </view>
+    <view class="empty-placeholder" wx:if="{{!imagePath}}">
+      <text>请选择图片</text>
+    </view>
+  </view>
+
+  <!-- 开始处理按钮 -->
+  <view class="start-button {{!imageLoaded || imageError ? 'disabled' : ''}}" bindtap="startProcess">
+    <text>开始修复</text>
+  </view>
+</view> 
